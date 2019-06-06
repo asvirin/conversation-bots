@@ -1,0 +1,18 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+requests = "*"
+telegram = "*"
+python-telegram-bot = "*"
+vk_api = "*"
+
+
+[requires]
+
+python_version = "3.7.3"
