@@ -47,4 +47,4 @@ def detect_intent_texts(project_id, session_id, text, language_code):
 
     response = intents_client.create_intent(parent, intent)
     
-    print('Обучение завершено')
+    print('Фразы загружены')
