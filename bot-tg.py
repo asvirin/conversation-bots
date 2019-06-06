@@ -3,7 +3,7 @@ import telegram
 import logging 
 import time
 import os
-import detect_intent_texts from function_dialogflow
+from function_dialogflow import detect_intent_texts 
 
 class MyLogsHandler(logging.Handler):
     def emit(self, record):
