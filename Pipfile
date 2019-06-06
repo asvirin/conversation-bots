@@ -11,6 +11,7 @@ requests = "*"
 telegram = "*"
 python-telegram-bot = "*"
 vk_api = "*"
+apiclient = "*"
 
 
 [requires]
