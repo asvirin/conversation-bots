@@ -1,10 +1,34 @@
 import random
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
-from function_dialogflow import detect_intent_texts
 import logging 
 import time
 import os
+
+from apiclient.discovery import build
+from apiclient.errors import HttpError
+from oauth2client.client import GoogleCredentials
+
+import dialogflow_v2 as dialogflow
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
+
+def detect_intent_texts(project_id, session_id, text, language_code):
+    session_client = dialogflow.SessionsClient()
+
+    session = session_client.session_path(project_id, session_id)
+    print('Session path: {}\n'.format(session))
+
+    
+    text_input = dialogflow.types.TextInput(
+            text=text, language_code=language_code)
+
+    query_input = dialogflow.types.QueryInput(text=text_input)
+
+    response = session_client.detect_intent(
+            session=session, query_input=query_input)
+        
+    return response.query_result.fulfillment_text
 
 class MyLogsHandler(logging.Handler):
     def emit(self, record):
