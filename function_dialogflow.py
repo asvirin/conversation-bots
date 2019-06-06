@@ -25,7 +25,7 @@ def detect_intent_texts(project_id, session_id, text, language_code):
     return response.query_result.fulfillment_text
   
   
-  def create_intent(project_id, display_name, training_phrases_parts,
+def create_intent(project_id, display_name, training_phrases_parts,
                   message_texts):
     intents_client = dialogflow.IntentsClient()
 
