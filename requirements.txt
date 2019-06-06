@@ -1,4 +1,4 @@
 requests = 2.20.0
 python-telegram-bot = 11.1.0
 vk_api = 2.8
-apiclient = 1.0.4
+google-api-python-client = 1.0.4
