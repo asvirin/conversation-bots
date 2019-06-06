@@ -58,7 +58,7 @@ if __name__ == "__main__":
     logger.info("Бот для общения в ВКонтакте запущен")
     
     try:
-        vk_community_token = os.environ['project_id']
+        vk_community_token = os.environ['vk_community_token']
         vk_session = vk_api.VkApi(token=vk_community_token)
         vk_api = vk_session.get_api()
         longpoll = VkLongPoll(vk_session)
