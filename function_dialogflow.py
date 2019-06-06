@@ -5,7 +5,7 @@ from oauth2client.client import GoogleCredentials
 
 import dialogflow_v2 as dialogflow
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="./key_for_dialogflow.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
 def detect_intent_texts(project_id, session_id, text, language_code):
     session_client = dialogflow.SessionsClient()
