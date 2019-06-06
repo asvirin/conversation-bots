@@ -62,7 +62,7 @@ python3 pip install -r requirements.txt
 3) В разделе Settings добавить новый [Buildpack](https://github.com/elishaterada/heroku-google-application-credentials-buildpack);
 4) В раздел Config Vars добавить все переменные окружения.
 
-# Как создать модель вопроса — ответ в dialogflow
+# Как создать модель вопрос — ответ в dialogflow
 #### Cоздание новой темы разговора
 1) На вкладке Intents создать Intent. Это будет отдельной темой для бота.
 2) Добавить варианты вопросов и ответов.
