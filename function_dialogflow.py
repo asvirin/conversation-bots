@@ -46,3 +46,5 @@ def detect_intent_texts(project_id, session_id, text, language_code):
         messages=[message])
 
     response = intents_client.create_intent(parent, intent)
+    
+    print('Обучение завершено')
