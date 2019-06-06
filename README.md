@@ -5,8 +5,10 @@
 Боты отвечают пользователю на сообщения, боты работают на одной бозе фраз, которая загружена в DialogFlow. Ботов можно быстро обучить благодаря дополнительно реализованным функциям. Также в ботах реализована отправка сообщений на отдельного бота в телеграме для ошибок.
 
 Боты, с которыми можно поговорить:
-1) [Телеграм](https://t.me/speech_recognition_dvmn_bot). Для старта необходимо ввести команду /start
-2) [ВКонтакте](https://vk.com/public183166802). Бот отвечает на личные сообщения данной группы
+1) [Телеграм](https://t.me/speech_recognition_dvmn_bot);
+2) [ВКонтакте](https://vk.com/public183166802). Бот отвечает на личные сообщения данной группы.
+  
+Примечание. Если вы задете сложный вопрос для бота, то бот в Телеграме ответит 'no_answer', в бот ВКонтакте ничего не ответит.
 
 ![](working_bot.gif)
 
@@ -43,7 +45,7 @@
 ### Этап 3. Запустить бота 
 #### Пример запуска в консоли
 ```python
-python3 main.py
+python3 bot-tg.py
 ```
 
 # Требования
@@ -54,8 +56,26 @@ python3 pip install -r requirements.txt
 ```
 
 # Требования к запуску на Heroku
-Для запуска на Heroku необходимо файлы:
+Для запуска на Heroku необходимо:
 1) Файл Procfile. В файле Procfile прописано какой файл нужно запускать на Heroku;
 2) Файл Pipfile. В файлах Pipfile и reqirements.txt указаны необходимые модули для работы бота;
 3) В разделе Settings добавить новый [Buildpack](https://github.com/elishaterada/heroku-google-application-credentials-buildpack);
 4) В раздел Config Vars добавить все переменные окружения.
+
+# Как создать модель вопроса — ответ в dialogflow
+#### Cоздание новой темы разговора
+1) На вкладке Intents создать Intent. Это будет отдельной темой для бота.
+2) Добавить варианты вопросов и ответов.
+
+#### Создать список быстрых ответов
+1) На вкладке Small Talk добавить ответы на самые популярные вопросы.
+
+#### Пример автоматизации в папке Example
+1) Файл [example phrases.json](https://github.com/asvirin/bots/blob/master/example/example%20phrases.json) — пример файла по которому можно построить темы разговора.
+2) Файл [example_create_intent.py](https://github.com/asvirin/bots/blob/master/example/example_create_intent.py) — пример файла для парсинга файла из пункта 1 и вызова функции из пункта 3.
+3) Файл [function_dialogflow.py](https://github.com/asvirin/bots/blob/master/example/function_dialogflow.py), функция create_intent — пример кода отправки данных для создания темы разговора. Обратите внимание, что API Dialogflow требует отправка ответов и вопросов в формате list.
+##### Аргументы функции create_intent:
+— project_id: id проекта, который мы получили в пункте 2.5;
+— display_name: название Intent (темы диалога);
+— training_phrases_parts: фразы на которые будет реагировать бот;
+— message_texts: ответы для бота.
