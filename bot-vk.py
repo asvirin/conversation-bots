@@ -4,6 +4,7 @@ from vk_api.longpoll import VkLongPoll, VkEventType
 import logging 
 import time
 import os
+import telegram
 
 from apiclient.discovery import build
 from apiclient.errors import HttpError
