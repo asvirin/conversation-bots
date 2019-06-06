@@ -37,7 +37,7 @@ class MyLogsHandler(logging.Handler):
         chat_id_information_message = os.environ['chat_id_information_message']
         log_entry = self.format(record)
         bot_error = telegram.Bot(token=telegram_token_information_message)
-        bot_error.send_message(chat_id=chat_id, text=log_entry) 
+        bot_error.send_message(chat_id=chat_id_information_message, text=log_entry) 
 
 def echo(event, vk_api):
     user_id = event.user_id
