@@ -18,7 +18,10 @@ def detect_intent_texts(project_id, session_id, text, language_code):
     response = session_client.detect_intent(
                 session=session, query_input=query_input)
 
-    return response.query_result.fulfillment_text
+    if response.query_result.intent.is_fallback:
+        return False
+    else:
+        return response.query_result.fulfillment_text
 
 class MyLogsHandler(logging.Handler):
     def emit(self, record):
