@@ -12,36 +12,14 @@ from oauth2client.client import GoogleCredentials
 
 import dialogflow_v2 as dialogflow
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
-
-def detect_intent_texts(project_id, session_id, text, language_code):
-    session_client = dialogflow.SessionsClient()
-
-    session = session_client.session_path(project_id, session_id)
-    
-    text_input = dialogflow.types.TextInput(
-            text=text, language_code=language_code)
-
-    query_input = dialogflow.types.QueryInput(text=text_input)
-
-    response = session_client.detect_intent(
-            session=session, query_input=query_input)
-        
-    return response.query_result.fulfillment_text
-
-class MyLogsHandler(logging.Handler):
-    def emit(self, record):
-        telegram_token_information_message = os.environ['telegram_token_information_message']
-        chat_id_information_message = os.environ['chat_id_information_message']
-        log_entry = self.format(record)
-        bot_error = telegram.Bot(token=telegram_token_information_message)
-        bot_error.send_message(chat_id=chat_id_information_message, text=log_entry) 
+import curses_tools
+from curses_tools import MyLogsHandler
 
 def echo(event, vk_api):
     user_id = event.user_id
     user_message = event.text
     project_id = os.environ['project_id']
-    message = detect_intent_texts(project_id, event.user_id, user_message, 'ru-RU')
+    message = curses_tools.detect_intent_texts(project_id, event.user_id, user_message, 'ru-RU')
     if message != 'no_answer':
         vk_api.messages.send(
             user_id=event.user_id,
