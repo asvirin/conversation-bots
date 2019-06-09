@@ -2,6 +2,7 @@ import os
 import dialogflow_v2 as dialogflow
 import telegram
 import logging 
+import time
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
@@ -26,6 +27,7 @@ def detect_intent_texts(project_id, session_id, text, language_code):
         
     except requests.exceptions.HTTPError:
         logger.exception("Сетевые проблемы с Dialogflow")
+        time.sleep(300)
         
 class MyLogsHandler(logging.Handler):
     def emit(self, record):
