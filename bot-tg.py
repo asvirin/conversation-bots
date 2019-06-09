@@ -10,7 +10,7 @@ from oauth2client.client import GoogleCredentials
 
 import dialogflow_v2 as dialogflow
 
-from new_func import detect_intent_texts
+import new_func
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
