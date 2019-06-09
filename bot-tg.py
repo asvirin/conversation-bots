@@ -10,7 +10,7 @@ from oauth2client.client import GoogleCredentials
 
 import dialogflow_v2 as dialogflow
 
-import new_func
+import curses_tools
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
@@ -26,7 +26,7 @@ def echo(bot, update):
     chat_id = update.message.chat_id
     user_message = update.message.text
     project_id = os.environ['project_id']
-    bot_answer = new_func.detect_intent_texts(project_id, chat_id, user_message, 'ru-RU')
+    bot_answer = curses_tools.detect_intent_texts(project_id, chat_id, user_message, 'ru-RU')
     update.message.reply_text(bot_answer)
     
 def start(bot, update):
