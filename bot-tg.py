@@ -11,7 +11,7 @@ from oauth2client.client import GoogleCredentials
 import dialogflow_v2 as dialogflow
 
 import curses_tools
-#from curses_tools import MyLogsHandler
+from curses_tools import MyLogsHandler
         
 def echo(bot, update):
     chat_id = update.message.chat_id
@@ -26,7 +26,7 @@ def start(bot, update):
 if __name__ == '__main__': 
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
-    logger.addHandler(curses_tools.MyLogsHandler())
+    logger.addHandler(MyLogsHandler())
     logger.info("Бот для общения в Телеграме запущен")
     
     try:
