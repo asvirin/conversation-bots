@@ -14,15 +14,19 @@ def detect_intent_texts(project_id, session_id, text, language_code):
                 text=text, language_code=language_code)
 
     query_input = dialogflow.types.QueryInput(text=text_input)
-
-    response = session_client.detect_intent(
+    
+    try:
+        response = session_client.detect_intent(
                 session=session, query_input=query_input)
-
-    if response.query_result.intent.is_fallback:
-        return False
-    else:
-        return response.query_result.fulfillment_text
-
+    
+        if response.query_result.intent.is_fallback:
+            return False
+        else:
+            return response.query_result.fulfillment_text
+        
+    except requests.exceptions.HTTPError:
+        logger.exception("Сетевые проблемы с Dialogflow")
+        
 class MyLogsHandler(logging.Handler):
     def emit(self, record):
         telegram_token_information_message = os.environ['telegram_token_information_message']
