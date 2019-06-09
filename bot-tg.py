@@ -11,14 +11,7 @@ from oauth2client.client import GoogleCredentials
 import dialogflow_v2 as dialogflow
 
 import curses_tools
-
-class MyLogsHandler(logging.Handler):
-    def emit(self, record):
-        telegram_token_information_message = os.environ['telegram_token_information_message']
-        chat_id_information_message = os.environ['chat_id_information_message']
-        log_entry = self.format(record)
-        bot_error = telegram.Bot(token=telegram_token_information_message)
-        bot_error.send_message(chat_id=chat_id_information_message, text=log_entry)   
+from curses_tools import MyLogsHandler
         
 def echo(bot, update):
     chat_id = update.message.chat_id
