@@ -12,8 +12,6 @@ import dialogflow_v2 as dialogflow
 
 import curses_tools
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
-
 class MyLogsHandler(logging.Handler):
     def emit(self, record):
         telegram_token_information_message = os.environ['telegram_token_information_message']
