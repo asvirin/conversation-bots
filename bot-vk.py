@@ -6,8 +6,8 @@ import time
 import os
 import telegram
 
-import dialogflow_tools
-from dialogflow_tools import MyLogsHandler
+import handler_tools
+from handler_tools import MyLogsHandler
 
 def echo(event, vk_api):
     user_id = event.user_id
@@ -15,7 +15,7 @@ def echo(event, vk_api):
     project_id = os.environ['project_id']
     
     try:
-        message = dialogflow_tools.detect_intent_texts(project_id, event.user_id, user_message, 'ru-RU')
+        message = handler_tools.detect_intent_texts(project_id, event.user_id, user_message, 'ru-RU')
         if message is not None:
             vk_api.messages.send(
                 user_id=event.user_id,
