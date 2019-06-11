@@ -16,7 +16,7 @@ def echo(event, vk_api):
     
     try:
         message = dialogflow_tools.detect_intent_texts(project_id, event.user_id, user_message, 'ru-RU')
-        if message:
+        if message is not None:
             vk_api.messages.send(
                 user_id=event.user_id,
                 message=message,
