@@ -72,8 +72,7 @@ python3 pip install -r requirements.txt
 
 #### Пример автоматизации в папке Example
 1) Файл [example phrases.json](https://github.com/asvirin/bots/blob/master/example/example%20phrases.json) — пример файла по которому можно построить темы разговора.
-2) Файл [example_create_intent.py](https://github.com/asvirin/bots/blob/master/example/example_create_intent.py) — пример файла для парсинга файла из пункта 1 и вызова функции из пункта 3.
-3) Файл [function_dialogflow.py](https://github.com/asvirin/bots/blob/master/example/function_dialogflow.py), функция create_intent — пример кода отправки данных для создания темы разговора. Обратите внимание, что API Dialogflow требует отправка ответов и вопросов в формате list.
+2) Файл [example_create_intent.py](https://github.com/asvirin/bots/blob/master/example/example_create_intent.py) — пример файла для парсинга файла из пункта 1. Функция create_intent — пример кода отправки данных для создания темы разговора. Обратите внимание, что API Dialogflow требует отправка ответов и вопросов в формате list.
 ##### Аргументы функции create_intent:
 — project_id: id проекта, который мы получили в пункте 2.5;  
 — display_name: название Intent (темы диалога);  
