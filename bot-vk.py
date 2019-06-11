@@ -38,4 +38,3 @@ if __name__ == "__main__":
                 
     except Exception:
         logger.exception('Возникла ошибка в боте для общения в ВКонтакте ↓')
-        time(14400)
