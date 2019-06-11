@@ -6,14 +6,14 @@ import time
 import os
 import telegram
 
-import curses_tools
-from curses_tools import MyLogsHandler
+import dialogflow_tools
+from dialogflow_tools import MyLogsHandler
 
 def echo(event, vk_api):
     user_id = event.user_id
     user_message = event.text
     project_id = os.environ['project_id']
-    message = curses_tools.detect_intent_texts(project_id, event.user_id, user_message, 'ru-RU')
+    message = dialogflow_tools.detect_intent_texts(project_id, event.user_id, user_message, 'ru-RU')
     if message:
         vk_api.messages.send(
             user_id=event.user_id,
