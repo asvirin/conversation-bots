@@ -10,14 +10,14 @@ from oauth2client.client import GoogleCredentials
 
 import dialogflow_v2 as dialogflow
 
-import curses_tools
-from curses_tools import MyLogsHandler
+import dialogflow_tools
+from dialogflow_tools import MyLogsHandler
         
 def echo(bot, update):
     chat_id = update.message.chat_id
     user_message = update.message.text
     project_id = os.environ['project_id']
-    bot_answer = curses_tools.detect_intent_texts(project_id, chat_id, user_message, 'ru-RU')
+    bot_answer = dialogflow_tools.detect_intent_texts(project_id, chat_id, user_message, 'ru-RU')
     update.message.reply_text(bot_answer)
     
 def start(bot, update):
