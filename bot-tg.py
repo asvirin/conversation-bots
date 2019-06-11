@@ -17,8 +17,11 @@ def echo(bot, update):
     chat_id = update.message.chat_id
     user_message = update.message.text
     project_id = os.environ['project_id']
-    bot_answer = dialogflow_tools.detect_intent_texts(project_id, chat_id, user_message, 'ru-RU')
-    update.message.reply_text(bot_answer)
+    try:
+        bot_answer = dialogflow_tools.detect_intent_texts(project_id, chat_id, user_message, 'ru-RU')
+        update.message.reply_text(bot_answer)
+    except Exception:
+        logger.exception("Проблема при получении и отправке сообщений")
     
 def start(bot, update):
     update.message.reply_text('Ура! Я живой!')
